@@ -74,7 +74,7 @@
                     </li>
 
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-cog"></i>
                             <p>
                                 Management
@@ -138,6 +138,7 @@
         <!-- Default to the left -->
         <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
     </footer>
+    
 </div>
 <!-- ./wrapper -->
 
