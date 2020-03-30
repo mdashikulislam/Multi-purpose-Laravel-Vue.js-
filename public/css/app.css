@@ -30011,6 +30011,11 @@ a.text-muted:hover {
   color: #ffffff;
 }@charset "UTF-8";
 
+.bg-green {
+  background: #38c172 !important;
+  border-color: #38c172 !important;
+}
+
 .blue {
   color: #3490dc;
 }
@@ -46986,5 +46991,9 @@ readers do not read off random characters that represent icons */
 
 .router-link-exact-active i {
   color: #ffffff !important;
+}
+
+.usertable tr td {
+  vertical-align: middle !important;
 }
 

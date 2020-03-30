@@ -83,10 +83,12 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    <i class="fa fa-circle-o nav-icon purple"></i>
-                                    <p>Active Page</p>
-                                </a>
+                                <router-link to="/users" class="nav-link">
+                                    <i class="nav-icon fas fa-users yellow"></i>
+                                    <p>
+                                        Users
+                                    </p>
+                                </router-link>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
@@ -104,6 +106,7 @@
                             </p>
                         </router-link>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{route('logout')}}" class="nav-link" onclick="
                                 event.preventDefault();

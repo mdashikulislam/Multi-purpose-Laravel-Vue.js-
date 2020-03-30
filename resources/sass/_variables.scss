@@ -19,7 +19,10 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $white: #ffffff;
 
-
+.bg-green{
+    background: $green!important;
+    border-color: $green!important;
+}
 .blue{
     color:$blue;
 }
