@@ -30,8 +30,8 @@
                                 <td>{{user.id}}</td>
                                 <td>{{user.name}}</td>
                                 <td>{{user.email}}</td>
-                                <td>{{user.type}}</td>
-                                <td>{{user.created_at}}</td>
+                                <td>{{user.type | upperCase}}</td>
+                                <td>{{user.created_at | humanDate}}</td>
                                 <td>
                                     <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                     <a href="#" class="btn badge-danger"><i class="fas fa-trash"></i></a>
@@ -46,7 +46,6 @@
                 <!-- /.card -->
             </div>
         </div>
-
         <!-- Modal -->
         <div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="addNewModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
