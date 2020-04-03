@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2e22735a-b123-4130-9bc6-e0c118a17e47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Users.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +170,9 @@
       <workItem from="1585334346406" duration="9675000" />
       <workItem from="1585396013932" duration="9367000" />
       <workItem from="1585565092008" duration="10933000" />
-      <workItem from="1585727947190" duration="3919000" />
+      <workItem from="1585727947190" duration="4757000" />
+      <workItem from="1585928115372" duration="64000" />
+      <workItem from="1585934926539" duration="2536000" />
     </task>
     <servers />
   </component>
@@ -192,10 +196,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1585389535824" />
-    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1585595186309">
+    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1585928177867">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585595186309" />
+    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585928177867" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1585424945212">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

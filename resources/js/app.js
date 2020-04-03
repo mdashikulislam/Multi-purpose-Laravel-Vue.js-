@@ -8,36 +8,47 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import VueRouter from 'vue-router';
+//V-form Handling
 import { Form, HasError, AlertError } from 'vform';
-import moment from 'moment';
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
-
-
+//Router Library
+import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-
+//Router initialize
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/profile', component:  require('./components/Profile.vue').default},
     { path: '/users', component:  require('./components/Users.vue').default}
 ];
-
+//Router Register
 const router = new VueRouter({
     mode: 'history',
     routes // short for `routes: routes`
 });
 
-
+//Filter Text UpperCase
 Vue.filter('upperCase',function (text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 });
 
+//Human Readable Date Format
+import moment from 'moment';
 Vue.filter('humanDate',function(date){
     return moment(date).format('MMMM Do YYYY');
 });
+
+//Vue ProgressBar
+import VueProgressBar from 'vue-progressbar'
+
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '2px'
+});
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
