@@ -42,12 +42,25 @@ Vue.filter('humanDate',function(date){
 
 //Vue ProgressBar
 import VueProgressBar from 'vue-progressbar'
-
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
     height: '2px'
 });
+
+//Sweet Alert 2
+
+import swal from 'sweetalert2';
+
+const toast = swal.mixin({
+    toast:true,
+    position:'top-end',
+    showConfirmButton:false,
+    timer:3000
+});
+window.toast = swal;
+
+
 
 /**
  * The following block of code may be used to automatically register your
