@@ -2154,24 +2154,33 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     createUser: function createUser() {
+      var _this2 = this;
+
       this.$Progress.start();
-      $('#addNewModal').modal('hide');
-      this.form.post('api/user');
-      toast({
-        type: 'success',
-        title: 'User create Successfully'
+      this.form.post('api/user').then(function () {
+        $('#addNewModal').modal('hide');
+        Fire.$emit('AfterCreate');
+        toast({
+          type: 'success',
+          title: 'User create Successfully'
+        });
+
+        _this2.$Progress.finish();
+      })["catch"](function () {
+        //console.log(error);
+        _this2.$Progress.finish();
       });
-      this.$Progress.finish();
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     this.loadUser(); //Auto Refresh request every set second
+    //setInterval(() => this.loadUser(), 3000);
 
-    setInterval(function () {
-      return _this2.loadUser();
-    }, 3000);
+    Fire.$on('AfterCreate', function () {
+      _this3.loadUser();
+    });
   }
 });
 
@@ -75485,7 +75494,9 @@ var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.mixin({
   showConfirmButton: false,
   timer: 3000
 });
-window.toast = sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a;
+window.toast = sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a; //Refresh Page
+
+window.Fire = new Vue();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

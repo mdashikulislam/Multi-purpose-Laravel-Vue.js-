@@ -60,6 +60,9 @@ const toast = swal.mixin({
 });
 window.toast = swal;
 
+//Refresh Page
+
+window.Fire = new Vue();
 
 
 /**
