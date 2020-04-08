@@ -35,7 +35,7 @@ import swal from "sweetalert2";
                                 <td>{{user.created_at | humanDate}}</td>
                                 <td>
                                     <a href="#" class="btn btn-primary" @click="editModal(user)"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn badge-danger" @click="deleteUser(user.id,user.name)"><i class="fas fa-trash"></i></a>
+                                    <a href="" class="btn badge-danger" @click.prevent="deleteUser(user.id,user.name)"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
 
@@ -52,12 +52,13 @@ import swal from "sweetalert2";
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addNewModalLabel">Add New User</h5>
+                        <h5 v-show="editMode" class="modal-title" >Update User Info</h5>
+                        <h5 v-show="!editMode" class="modal-title" >Add New User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                 <form @submit.prevent="createUser">
+                 <form @submit.prevent="editMode ? editUser() : createUser()">
                     <div class="modal-body">
 
                         <div class="form-group">
@@ -95,7 +96,8 @@ import swal from "sweetalert2";
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button v-show="editMode" type="submit" class="btn btn-success">Update</button>
+                        <button v-show="!editMode" type="submit" class="btn btn-primary">Create</button>
                     </div>
                  </form>
                 </div>
@@ -107,9 +109,9 @@ import swal from "sweetalert2";
 
 <script>
     export default {
-
         data(){
           return {
+              editMode: false,
               users: {},
               form : new Form({
                   name:'',
@@ -180,11 +182,16 @@ import swal from "sweetalert2";
             newModal(){
                 this.form.reset();
                 $('#addNewModal').modal('show');
+                this.editMode = false;
             },
             editModal(user){
                 this.form.reset();
                 $('#addNewModal').modal('show');
+                this.editMode = true;
                 this.form.fill(user);
+            },
+            editUser(){
+                console.log("edit");
             }
         },
         created() {
