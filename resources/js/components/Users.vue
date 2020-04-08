@@ -1,3 +1,4 @@
+import swal from "sweetalert2";
 <template>
     <div class="container">
         <div class="row mt-5">
@@ -33,8 +34,8 @@
                                 <td>{{user.type | upperCase}}</td>
                                 <td>{{user.created_at | humanDate}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn badge-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="" class="btn btn-primary" ><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn badge-danger" @click="deleteUser(user.id,user.name)"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
 
@@ -128,17 +129,52 @@
                 this.$Progress.start();
                 this.form.post('api/user').then(()=>{
                     $('#addNewModal').modal('hide');
-                    Fire.$emit('AfterCreate');
-                    toast({
-                        type:'success',
-                        title:'User create Successfully'
+                    //Fire.$emit('AfterCreate');
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'User Create successfully'
                     });
                     this.$Progress.finish();
                 }).catch(()=>{
                     //console.log(error);
                     this.$Progress.finish();
                 });
-
+            },
+            deleteUser(id,name){
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to delete '"+name+"'",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    //Send request to server
+                    if(result.value){
+                        this.form.delete('api/user/'+id).then(()=>{
+                            Fire.$emit('AfterCreate');
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            );
+                        }).catch(()=>{
+                            Swal("Failed!","There was something wrong","warning");
+                        });
+                    }
+                });
             }
         },
         created() {

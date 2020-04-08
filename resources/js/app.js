@@ -50,15 +50,9 @@ Vue.use(VueProgressBar, {
 
 //Sweet Alert 2
 
-import swal from 'sweetalert2';
-
-const toast = swal.mixin({
-    toast:true,
-    position:'top-end',
-    showConfirmButton:false,
-    timer:3000
-});
-window.toast = swal;
+//Sweet alert 2
+import Swal from 'sweetalert2'
+window.Swal = Swal;
 
 //Refresh Page
 

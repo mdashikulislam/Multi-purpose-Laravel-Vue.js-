@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e22735a-b123-4130-9bc6-e0c118a17e47" name="Default Changelist" comment="" />
+    <list default="true" id="2e22735a-b123-4130-9bc6-e0c118a17e47" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Users.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -178,6 +186,7 @@
       <workItem from="1586189503429" duration="1208000" />
       <workItem from="1586274720166" duration="151000" />
       <workItem from="1586274885295" duration="2484000" />
+      <workItem from="1586343122632" duration="5588000" />
     </task>
     <servers />
   </component>
@@ -201,26 +210,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1585389535824" />
-    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1586284701230">
+    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1586351390694">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586284701230" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1585424945212">
+    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586351390694" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1586351493373">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585424945212" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1585424945212">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586351493373" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1586351493373">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585424945212" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1585424945212">
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586351493373" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1586351493372">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585424945212" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1585424945212">
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586351493372" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1586351493373">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585424945212" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586351493373" />
     <state x="186" y="0" key="SettingsEditor" timestamp="1586274863600">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
