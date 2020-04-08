@@ -8,7 +8,7 @@ import swal from "sweetalert2";
                         <h3 class="card-title">Users Table</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewModal">Add New
+                            <button type="button" class="btn btn-success" @click="newModal">Add New
                                 <i class="fas fa-user-plus fw"></i>
                             </button>
                         </div>
@@ -34,7 +34,7 @@ import swal from "sweetalert2";
                                 <td>{{user.type | upperCase}}</td>
                                 <td>{{user.created_at | humanDate}}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary" ><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="btn btn-primary" @click="editModal(user)"><i class="fas fa-edit"></i></a>
                                     <a href="#" class="btn badge-danger" @click="deleteUser(user.id,user.name)"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
@@ -123,7 +123,7 @@ import swal from "sweetalert2";
         },
         methods:{
             loadUser(){
-                axios.get('api/user').then(({ data }) => { this.users = data.data })
+                axios.get('api/user').then(({ data }) => { this.users = data.data });
             },
             createUser(){
                 this.$Progress.start();
@@ -145,6 +145,7 @@ import swal from "sweetalert2";
                         icon: 'success',
                         title: 'User Create successfully'
                     });
+
                     this.$Progress.finish();
                 }).catch(()=>{
                     //console.log(error);
@@ -175,6 +176,15 @@ import swal from "sweetalert2";
                         });
                     }
                 });
+            },
+            newModal(){
+                this.form.reset();
+                $('#addNewModal').modal('show');
+            },
+            editModal(user){
+                this.form.reset();
+                $('#addNewModal').modal('show');
+                this.form.fill(user);
             }
         },
         created() {
