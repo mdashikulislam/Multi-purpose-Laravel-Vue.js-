@@ -2139,6 +2139,7 @@ __webpack_require__.r(__webpack_exports__);
       editMode: false,
       users: {},
       form: new Form({
+        id: '',
         name: '',
         email: '',
         password: '',
@@ -2211,27 +2212,44 @@ __webpack_require__.r(__webpack_exports__);
     },
     newModal: function newModal() {
       this.form.reset();
+      this.form.clear();
       $('#addNewModal').modal('show');
       this.editMode = false;
     },
     editModal: function editModal(user) {
       this.form.reset();
+      this.form.clear();
       $('#addNewModal').modal('show');
       this.editMode = true;
       this.form.fill(user);
     },
     editUser: function editUser() {
-      console.log("edit");
+      var _this4 = this;
+
+      this.$Progress.start();
+      this.form.put('api/user/' + this.form.id).then(function () {
+        _this4.$Progress.finish();
+
+        Fire.$emit('AfterCreate');
+        $('#addNewModal').modal('hide');
+        Swal.fire('Updated!', 'Information Updated Successfully', 'success');
+
+        _this4.form.reset();
+
+        _this4.form.clear();
+      })["catch"](function () {
+        _this4.$Progress.fail();
+      });
     }
   },
   created: function created() {
-    var _this4 = this;
+    var _this5 = this;
 
     this.loadUser(); //Auto Refresh request every set second
     //setInterval(() => this.loadUser(), 3000);
 
     Fire.$on('AfterCreate', function () {
-      _this4.loadUser();
+      _this5.loadUser();
     });
   }
 });
@@ -59475,7 +59493,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+          _c("div", { staticClass: "card-body table-rescponsive p-0" }, [
             _c("table", { staticClass: "table table-hover usertable" }, [
               _vm._m(0),
               _vm._v(" "),

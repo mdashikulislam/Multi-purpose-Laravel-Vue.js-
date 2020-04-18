@@ -14,7 +14,7 @@ import swal from "sweetalert2";
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
+                    <div class="card-body table-rescponsive p-0">
                         <table class="table table-hover usertable">
                             <thead>
                             <tr>
@@ -114,6 +114,7 @@ import swal from "sweetalert2";
               editMode: false,
               users: {},
               form : new Form({
+                  id:'',
                   name:'',
                   email:'',
                   password:'',
@@ -181,17 +182,34 @@ import swal from "sweetalert2";
             },
             newModal(){
                 this.form.reset();
+                this.form.clear();
                 $('#addNewModal').modal('show');
                 this.editMode = false;
             },
             editModal(user){
                 this.form.reset();
+                this.form.clear();
                 $('#addNewModal').modal('show');
                 this.editMode = true;
                 this.form.fill(user);
             },
             editUser(){
-                console.log("edit");
+                this.$Progress.start();
+                this.form.put('api/user/'+this.form.id).then(()=>{
+                    this.$Progress.finish();
+                    Fire.$emit('AfterCreate');
+                    $('#addNewModal').modal('hide');
+                    Swal.fire(
+                        'Updated!',
+                        'Information Updated Successfully',
+                        'success'
+                    );
+                    this.form.reset();
+                    this.form.clear();
+
+                }).catch(()=>{
+                this.$Progress.fail();
+                });
             }
         },
         created() {
