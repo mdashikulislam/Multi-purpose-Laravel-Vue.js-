@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::apiResources(['user'=>'API\UserController']);
 Route::group(['namespace'=>'API'],function (){
     Route::apiResource('user','UserController');
+    Route::apiResource('profile','UserProfileController');
 });
