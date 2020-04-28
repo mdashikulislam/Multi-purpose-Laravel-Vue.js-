@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace'=>'API'],function (){
     Route::apiResource('user','UserController');
     Route::apiResource('profile','UserProfileController');
+    Route::put('profile','UserProfileController@updateCurrentUserInfo');
 });

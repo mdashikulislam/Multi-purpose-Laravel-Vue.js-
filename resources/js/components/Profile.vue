@@ -59,39 +59,49 @@
 
                             <div class="tab-pane" id="settings">
                                 <form>
-                                    <div class="form-group ">
-                                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 col-form-label">Name</label>
                                         <div class="col-sm-10">
-                                            <input type="email" v-model="form.name" class="form-control" id="inputName" placeholder="Name">
+                                            <input v-model="form.name" type="text" name="name"
+                                               placeholder="Enter Name"
+                                               class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
+                                            <has-error :form="form" field="name"></has-error>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 col-form-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input type="email" v-model="form.email" class="form-control" id="inputEmail" placeholder="Email">
+                                            <input v-model="form.email" type="email" name="email"
+                                                   placeholder="Enter Name"
+                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
+                                            <has-error :form="form" field="email"></has-error>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 col-form-label">Short Bio</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                            <textarea v-model="form.bio" name="bio" placeholder="Short bio for user (optional)" class="form-control" :class="{ 'is-invalid': form.errors.has('bio')}"></textarea>
+                                            <has-error :form="form" field="bio"></has-error>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="profileimage" class="col-sm-2 col-form-label">Profile Picture</label>
                                         <div class="col-sm-10">
-                                            <input type="file" id="profileimage" >
+                                            <input type="file" id="profileimage" @change="updateImage">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 col-form-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input v-model="form.password" type="password" name="password"
+                                                   placeholder="Leave if not change"
+                                                   class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
+                                            <has-error :form="form" field="password"></has-error>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="inputSkills" class="col-sm-12 col-form-label">Passport(leave empty if not changing)</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputSkills" placeholder="Passport">
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-success">Update</button>
+                                            <button type="submit" @click.prevent="updateCurrentUserInfo" class="btn btn-success">Update</button>
                                         </div>
                                     </div>
                                 </form>
@@ -125,9 +135,38 @@
             loadCurrentUser(){
                 axios.get('api/profile').then((data)=>{
                     this.form.fill(data.data);
-                    console.log(data.data)
+                     //console.log(data.data)
                 }).catch(()=>{});
 
+            },
+            updateImage(e){
+                let file = e.target.files[0];
+                //console.log(file);
+                let reader = new FileReader();
+                if(file['size'] < 2111775){
+                    reader.onloadend = (file)=> {
+                       // console.log('RESULT',reader.result);
+                        this.form.photo = reader.result;
+                    }
+                    reader.readAsDataURL(file);
+                }else{
+                    Swal.fire(
+                        'Ops..!',
+                        'Your file larger then 2MB.',
+                        'error'
+                    );
+
+                }
+
+            },
+            updateCurrentUserInfo(){
+                this.$Progress.start();
+                this.form.put('api/profile').then(()=>{
+                    this.$Progress.finish();
+                    Swal.fire('Success','Profile update Successfully','success');
+                }).catch(()=>{
+                    this.$Progress.fail();
+                });
             }
         },
         created() {
