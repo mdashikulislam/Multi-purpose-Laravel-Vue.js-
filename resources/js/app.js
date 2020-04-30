@@ -13,6 +13,10 @@ import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+//Gate Control
+import Gate from "./Gate";
+Vue.prototype.$gate = new Gate(window.user);
+
 
 //Router Library
 import VueRouter from 'vue-router';

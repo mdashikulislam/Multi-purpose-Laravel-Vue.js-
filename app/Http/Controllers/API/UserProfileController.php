@@ -30,6 +30,10 @@ class UserProfileController extends Controller
             $name = time().'.'.explode('/',explode(':',substr($request->photo, 0, strpos($request->photo,';')))[1])[1];
             \Image::make($request->photo)->save(public_path('img/profile/').$name);
             $request->merge(['photo'=> $name]);
+            $newPhoto = public_path('img/profile/').$currentUserPhoto;
+            if (file_exists($newPhoto)){
+                @unlink($newPhoto);
+            }
         }
         if (!empty($request->password)){
             $request->merge(['password'=>\Hash::make($request->password)]);

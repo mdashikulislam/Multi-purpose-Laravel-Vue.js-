@@ -3,7 +3,7 @@ import swal from "sweetalert2";
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card" v-if="this.$gate.isAdmin()">
                     <div class="card-header">
                         <h3 class="card-title">Users Table</h3>
 
@@ -126,7 +126,10 @@ import swal from "sweetalert2";
         },
         methods:{
             loadUser(){
-                axios.get('api/user').then(({ data }) => { this.users = data.data });
+                if(this.$gate.isAdmin()){
+                    axios.get('api/user').then(({ data }) => { this.users = data.data });
+                }
+
             },
             createUser(){
                 this.$Progress.start();

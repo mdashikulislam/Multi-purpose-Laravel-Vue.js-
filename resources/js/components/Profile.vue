@@ -9,7 +9,7 @@
                         <h5 class="widget-user-desc text-right">Web Designer</h5>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle" src="img/student.png" alt="User Avatar">
+                        <img class="img-circle" :src="updateProfileImage()" alt="User Avatar">
                     </div>
                     <div class="card-footer">
                         <div class="row">
@@ -135,7 +135,8 @@
             loadCurrentUser(){
                 axios.get('api/profile').then((data)=>{
                     this.form.fill(data.data);
-                     //console.log(data.data)
+                     //console.log(data.data);
+
                 }).catch(()=>{});
 
             },
@@ -163,14 +164,23 @@
                 this.$Progress.start();
                 this.form.put('api/profile').then(()=>{
                     this.$Progress.finish();
+                    Fire.$emit('AfterRefresh')
                     Swal.fire('Success','Profile update Successfully','success');
                 }).catch(()=>{
                     this.$Progress.fail();
                 });
+            },
+            updateProfileImage(){
+                let photos = (this.form.photo.length > 200)? this.form.photo : 'img/profile/'+this.form.photo;
+                return photos;
             }
         },
         created() {
             this.loadCurrentUser();
+            Fire.$on('AfterRefresh',()=>{
+               this.loadCurrentUser();
+            });
+
         },
         mounted() {
             console.log('Component mounted.')
