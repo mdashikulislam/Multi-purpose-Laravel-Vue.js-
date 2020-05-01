@@ -48,6 +48,9 @@ import swal from "sweetalert2";
             </div>
         </div>
         <!-- Modal -->
+        <div v-if="!this.$gate.isAdmin()">
+            <not-found></not-found>
+        </div>
         <div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="addNewModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">

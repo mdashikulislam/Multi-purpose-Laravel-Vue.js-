@@ -7,6 +7,9 @@
                 <passport-personal-access-tokens></passport-personal-access-tokens>
             </div>
         </div>
+        <div v-if="!this.$gate.isAdmin()">
+            <not-found></not-found>
+        </div>
     </div>
 </template>
 
