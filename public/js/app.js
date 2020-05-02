@@ -62707,7 +62707,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("h5", { staticClass: "widget-user-desc text-right" }, [
-                _vm._v("Web Designer")
+                _vm._v(_vm._s(this.form.type))
               ])
             ]
           ),
@@ -79828,6 +79828,9 @@ var routes = [{
 }, {
   path: '/developer',
   component: __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue")["default"]
+}, {
+  path: '*',
+  component: __webpack_require__(/*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue")["default"]
 }]; //Router Register
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
