@@ -235,6 +235,21 @@ import swal from "sweetalert2";
             Fire.$on('AfterCreate',() => {
                 this.loadUser();
             });
+
+
+            Fire.$on('SearchItem',()=>{
+                let query = this.$parent.search;
+                axios.get('api/search?q='+query).then((data)=>{
+                    this.users = data.data
+                }).catch(()=>{
+                    Swal.fire(
+                        'Opps!',
+                        'No User Found',
+                        'error'
+                    );
+                });
+
+            });
         }
     }
 </script>

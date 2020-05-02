@@ -21,4 +21,5 @@ Route::group(['namespace'=>'API'],function (){
     Route::apiResource('user','UserController');
     Route::apiResource('profile','UserProfileController');
     Route::put('profile','UserProfileController@updateCurrentUserInfo');
+    Route::get('search','UserController@search');
 });

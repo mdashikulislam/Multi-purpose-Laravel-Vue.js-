@@ -104,7 +104,15 @@ Vue.component('not-found',require('./components/NotFound').default);
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    data:{
+        search: '',
+    },
+    methods:{
+        searchIt:_.debounce(()=>{
+            Fire.$emit('SearchItem');
+        },1000)
+    }
 });
 
 

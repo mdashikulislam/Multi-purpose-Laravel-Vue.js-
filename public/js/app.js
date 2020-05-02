@@ -2494,6 +2494,14 @@ __webpack_require__.r(__webpack_exports__);
     Fire.$on('AfterCreate', function () {
       _this6.loadUser();
     });
+    Fire.$on('SearchItem', function () {
+      var query = _this6.$parent.search;
+      axios.get('api/search?q=' + query).then(function (data) {
+        _this6.users = data.data;
+      })["catch"](function () {
+        Swal.fire('Opps!', 'No User Found', 'error');
+      });
+    });
   }
 });
 
@@ -79886,7 +79894,15 @@ Vue.component('not-found', __webpack_require__(/*! ./components/NotFound */ "./r
 
 var app = new Vue({
   el: '#app',
-  router: router
+  router: router,
+  data: {
+    search: ''
+  },
+  methods: {
+    searchIt: _.debounce(function () {
+      Fire.$emit('SearchItem');
+    }, 1000)
+  }
 });
 
 /***/ }),
