@@ -9,4 +9,12 @@ export default class Gate {
    isuser(){
        return this.user.type === 'user';
    }
+   isAuthor(){
+       return this.user.type === 'author';
+   }
+   isAdminOrOthore(){
+       if(this.user.type==='admin' || this.user.type === 'author'){
+           return true;
+       }
+   }
 }

@@ -3,7 +3,7 @@ import swal from "sweetalert2";
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-12">
-                <div class="card" v-if="this.$gate.isAdmin()">
+                <div class="card" v-if="this.$gate.isAdminOrOthore()">
                     <div class="card-header">
                         <h3 class="card-title">Users Table</h3>
 
@@ -48,7 +48,7 @@ import swal from "sweetalert2";
             </div>
         </div>
         <!-- Modal -->
-        <div v-if="!this.$gate.isAdmin()">
+        <div v-if="!this.$gate.isAdminOrOthore()">
             <not-found></not-found>
         </div>
         <div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="addNewModalLabel" aria-hidden="true">
@@ -129,7 +129,7 @@ import swal from "sweetalert2";
         },
         methods:{
             loadUser(){
-                if(this.$gate.isAdmin()){
+                if(this.$gate.isAdminOrOthore()){
                     axios.get('api/user').then(({ data }) => { this.users = data.data });
                 }
 
