@@ -27,7 +27,7 @@ import swal from "sweetalert2";
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="user in users" :key="user.id">
+                            <tr v-for="user in users.data" :key="user.id">
                                 <td>{{user.id}}</td>
                                 <td>{{user.name}}</td>
                                 <td>{{user.email}}</td>
@@ -41,6 +41,9 @@ import swal from "sweetalert2";
 
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        <pagination :data="users" @pagination-change-page="getResults"></pagination>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -128,9 +131,15 @@ import swal from "sweetalert2";
           }
         },
         methods:{
+            getResults(page = 1) {
+                axios.get('api/user?page=' + page)
+                    .then(response => {
+                        this.users = response.data;
+                    });
+            },
             loadUser(){
                 if(this.$gate.isAdminOrOthore()){
-                    axios.get('api/user').then(({ data }) => { this.users = data.data });
+                    axios.get('api/user').then(({ data }) => { this.users = data });
                 }
 
             },
